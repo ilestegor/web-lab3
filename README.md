@@ -1,6 +1,6 @@
 # Lab3
 ## var: 2323
-<img src="src/main/webapp/img/graph.png" width="320" height="270" alt="graph_pic"/>
+<img src="src/main/webapp/resources/img/graph.png" width="320" height="270" alt="graph_pic"/>
 
 
 

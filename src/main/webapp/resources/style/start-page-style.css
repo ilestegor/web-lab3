@@ -1,0 +1,14 @@
+/*styles for start page*/
+.start-btn{
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.start-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="templates/templateLayout.xhtml">
+    <ui:define name="title">
+        <title>Main page</title>
+    </ui:define>
+
+    <ui:define name="upper-header">
+
+    </ui:define>
+    
+    <ui:define name="content">
+        <div class="section">
+            <div class="table-wrapper">
+                <h:outputText value="HISTORY TABLE"/>
+                <h:dataTable id="request-history-table">
+                    <h:column>
+                        <f:facet name = "header">X</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header">Y</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header">R</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header">Current Time</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header">Execution Time</f:facet>
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header">Hit Area</f:facet>
+                    </h:column>
+                </h:dataTable>
+            </div>
+
+            <div class="image-wrapper">
+                <div id="calculator">
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+            </div>
+
+        </div>
+    </ui:define>
+
+    <ui:define name="js">
+        <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6" type="text/javascript">
+        </script>
+        <h:outputScript library="js" name="graph.js"/>
+    </ui:define>
+</ui:composition>
+
+</html>

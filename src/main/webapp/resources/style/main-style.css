@@ -1,0 +1,42 @@
+.section{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 90%;
+}
+.section > div{
+    border-radius: 10px;
+    padding: 10px 10px;
+    max-height: 300px;
+    min-height: 300px;
+    flex: 1;
+    background-color: #232931;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.image-wrapper{
+    display: flex;
+}
+#calculator{
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+}
+.input-wrapper{
+    white-space: nowrap;
+}
+
+#request-history-table{
+    border-collapse: collapse;
+    margin: 10px auto 0 auto;
+    table-layout: fixed;
+}
+.table-wrapper{
+    overflow: scroll;
+}
+tr, td, th{
+    padding: 8px 8px;
+    border: 1px solid white;
+    color: white;
+}
