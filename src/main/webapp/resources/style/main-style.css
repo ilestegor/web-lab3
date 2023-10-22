@@ -49,16 +49,12 @@
     white-space: normal;
     word-wrap: break-word;
     padding: 0;
+}
+.input-wrapper td:nth-of-type(n) label{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.input-wrapper tr:nth-of-type(n){
-    display: flex;
-    justify-content: space-between;
-    white-space: normal;
-    word-wrap: break-word;
 }
 .input-wrapper table:first-of-type{
     width: 100%;
@@ -165,7 +161,40 @@ body .ui-button:hover{
     top: 20px;
     right: 20px;
 }
+input[type=radio]{
+    display: none;
+}
 
+/*custom radio*/
+.custom-x-button{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-x-button::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #3f49e8;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .5s;
+}
+.x-button:checked + .custom-x-button{
+    border-color: white;
+}
+.x-button:checked + .custom-x-button::before{
+    opacity: 1;
+}
 
 /*errors*/
 .error{
@@ -184,5 +213,8 @@ body .ui-button:hover{
 }
 .error-text-input{
     border: 1px solid red;
+}
+#input-form\:j_idt31\:0 {
+
 }
 

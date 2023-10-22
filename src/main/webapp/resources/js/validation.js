@@ -3,12 +3,19 @@ const yIndex = 1;
 const rIndex = 2;
 const regEx = /-?\d+/g;
 
+
+
+
+
+let btn = document.querySelector(".submit-btn");
+btn.addEventListener('click', getInput)
 //get data from user
-function getInput(){
+function getInput(e){
+    e.preventDefault()
     let x = document.querySelector(".x-value").textContent.trim().match(regEx);
     let y = document.getElementById("input-form:y-input");
     let r = document.querySelector("input[type=radio]:checked");
-    // console.log([x.toString(), y.value, r.value])
+    console.log([x.toString(), y.value, r.value])
     return [x, y, r];
 }
 
