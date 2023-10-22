@@ -7,8 +7,8 @@
 .section > div{
     border-radius: 10px;
     padding: 10px 10px;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 380px;
+    min-height: 320px;
     flex: 1;
     background-color: #232931;
     color: white;
@@ -66,7 +66,7 @@
 }
 .input-container{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 10px;
 }
@@ -74,7 +74,7 @@
     margin-right: 18px;
 }
 .input-container:not(:nth-child(2)){
-    margin-top: 30px;
+    margin-top: 25px;
 }
 .input-container:nth-child(2){
     margin-top: 15px;
@@ -165,3 +165,24 @@ body .ui-button:hover{
     top: 20px;
     right: 20px;
 }
+
+
+/*errors*/
+.error{
+    font-size: 11px;
+    color: #e84545;
+    text-align: left;
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+.error-container{
+    display: flex;
+    flex-direction: column;
+}
+.ui-slider.error-slider{
+    background: red;
+}
+.error-text-input{
+    border: 1px solid red;
+}
+

@@ -25,7 +25,7 @@ calculator.setMathBounds({
     bottom: -5,
     top: 5
 });
-// let initState= calculator.getState();
+let initState= calculator.getState();
 
 
 
