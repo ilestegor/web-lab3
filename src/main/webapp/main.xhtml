@@ -68,9 +68,8 @@
                     <div class="input-container">
                         <p>Y value: </p>
                         <div class="error-container input-box">
-                            <h:inputText id="y-input" styleClass="text-input" a:placeholder="Enter value from -3...3"/>
+                            <h:inputText id="y-input" styleClass="text-input y-text" a:placeholder="Enter value from -3...3"/>
                             <p class="error" id="y-error-field">
-
                             </p>
                         </div>
                     </div>
@@ -85,26 +84,24 @@
                                 <f:selectItem itemValue="3" itemLabel="3"/>
                             </h:selectOneRadio>
                             <p class="error" id="r-error-field">
-
                             </p>
                         </div>
                     </div>
                     <div class="input-container">
-                        <p:commandButton styleClass="btn submit-btn" value="Submit"/>
-                        <p:commandButton styleClass="btn reset-btn" value="Reset"/>
+                        <h:commandButton styleClass="btn submit-btn" value="Submit" type="submit"/>
+                        <h:commandButton styleClass="btn reset-btn" value="Reset" type="reset"/>
                     </div>
                 </h:form>
             </div>
 
         </div>
     </ui:define>
-
     <ui:define name="js">
         <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6" type="text/javascript">
         </script>
-        <h:outputScript library="js" name="graph.js"/>
         <h:outputScript library="js" name="validation.js"/>
         <h:outputScript library="js" name="radioElement.js"/>
+        <h:outputScript library="js" name="graph.js"/>
     </ui:define>
 </ui:composition>
 

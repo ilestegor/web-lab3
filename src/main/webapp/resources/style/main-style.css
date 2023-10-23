@@ -95,10 +95,11 @@
 .text-input::placeholder{
     font-size: 12px;
 }
-body .ui-button {
+.btn {
     width: 100%;
     max-width: 135px;
     min-width: 80px;
+    padding: 7px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
@@ -109,7 +110,7 @@ body .ui-button {
     transition: background 0.3s;
     -webkit-user-select: none;
 }
-body .ui-button:hover{
+.btn:hover{
     background: #1a237e
 }
 .close-btn{
@@ -161,7 +162,7 @@ body .ui-button:hover{
     top: 20px;
     right: 20px;
 }
-input[type=radio]{
+.x-button{
     display: none;
 }
 
@@ -213,8 +214,5 @@ input[type=radio]{
 }
 .error-text-input{
     border: 1px solid red;
-}
-#input-form\:j_idt31\:0 {
-
 }
 

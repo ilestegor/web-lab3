@@ -1,9 +1,14 @@
 let elt = document.getElementById('calculator');
-// let rInput = getInput()[rIndex];
-// elt.addEventListener('click', handleGraphClick);
-// rInput.addEventListener("keyup", () => {
-//     checkRPointAndDrawGraphs(rInput.value)
-// })
+let rInput = document.querySelectorAll(".input-wrapper td:nth-of-type(n) input[type=radio]");
+let rError = getErrorTextField()[rIndex];
+let rField = document.querySelectorAll("input[type=radio]");
+let rChecked = document.querySelectorAll(".x-button")
+
+for (let i = 0; i <rInput.length; i++) {
+    rInput[i].onchange = () => {
+        drawGraphByR(rInput[i].value)
+    }}
+
 
 //graph config
 let calculator = Desmos.GraphingCalculator(elt, {
@@ -20,44 +25,37 @@ let calculator = Desmos.GraphingCalculator(elt, {
     yAxisArrowMode: Desmos.AxisArrowModes.POSITIVE
 });
 calculator.setMathBounds({
-    left: -5,
-    right: 5,
-    bottom: -5,
-    top: 5
+    left: -4,
+    right: 4,
+    bottom: -4,
+    top: 4
 });
 let initState= calculator.getState();
 
 
 
-//
-// //check if r point is specified, if true => draw graphs according to r
-// //accepts r point
-// function checkRPointAndDrawGraphs(r){
-//     if (validateAndSetValidationText(checkR,r, getErrorTextField()[rIndex], getInput()[rIndex], "", "Введите число от 2...5", "Введите число")){
-//         calculator.setExpression({
-//             id: 'area-1',
-//             latex: 'y\\le' +  r + '\\ \\left\\{0\\le x\\le\\frac{' + r + '}{2}\\right\\}\\left\\{y\\ge0\\right\\}'
-//         });
-//         calculator.setExpression({
-//             id: 'area-2',
-//             latex: 'x^{2}+y^{2}\\le' + r + '^{2}\\left\\{x<0\\right\\}\\left\\{y>0\\right\\}'
-//         });
-//         calculator.setExpression({
-//             id: 'area-3',
-//             latex: 'y\\ >=\\ -' + r + '-x * 2\\left\\{x<0\\right\\}\\left\\{y<0\\right\\}'
-//         })
-//     } else {
-//         removeExpressions('area-1');
-//         removeExpressions('area-2');
-//         removeExpressions('area-3');
-//     }
-//
-// }
-// function removeExpressions(id){
-//     calculator.removeExpression({
-//         id: id
-//     });
-// }
+
+//draw graph by r input point
+function drawGraphByR(r){
+    if (validateRInput(r, rError, rField, rChecked))
+        calculator.setExpression({
+            id: 'area-1',
+            latex: 'y\\le'+  r  + '\\ \\left\\{0\\le x\\le\\frac{' + r + '}{2}\\right\\}\\left\\{y\\ge0\\right\\}'
+        });
+        calculator.setExpression({
+            id: 'area-2',
+            latex: 'x^{2}+y^{2}\\le\\frac{' + r + '}{2}^{2}\\left\\{x<0\\right\\}\\left\\{y>0\\right\\}'
+        });
+        calculator.setExpression({
+            id: 'area-3',
+            latex: 'y\\ >=\\ - ' + r + '-x * 2\\left\\{x<0\\right\\}\\left\\{y<0\\right\\}'
+        })
+}
+function removeExpressions(id){
+    calculator.removeExpression({
+        id: id
+    });
+}
 //
 //
 //

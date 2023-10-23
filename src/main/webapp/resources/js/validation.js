@@ -2,20 +2,18 @@ const xIndex = 0;
 const yIndex = 1;
 const rIndex = 2;
 const regEx = /-?\d+/g;
+let submitBtn = document.querySelector(".submit-btn");
+let resetBtn = document.querySelector(".reset-btn");
+submitBtn.addEventListener('click', () => {
+    validateInput()
+})
+resetBtn.addEventListener('click', (e) => resetInput(e))
 
-
-
-
-
-let btn = document.querySelector(".submit-btn");
-btn.addEventListener('click', getInput)
 //get data from user
-function getInput(e){
-    e.preventDefault()
+function getInput(){
     let x = document.querySelector(".x-value").textContent.trim().match(regEx);
     let y = document.getElementById("input-form:y-input");
     let r = document.querySelector("input[type=radio]:checked");
-    console.log([x.toString(), y.value, r.value])
     return [x, y, r];
 }
 
@@ -27,64 +25,56 @@ function getErrorTextField(){
     return [xError, yError, rError];
 }
 
-function validateInput(event){
-    event.preventDefault();
+function validateInput(){
     //receiving data from user
-    let x = getInput()[xIndex].toString();
+
+
+    let yElement = getInput()[yIndex];
+    let rElement = document.querySelectorAll(".x-button")
     let y = getInput()[yIndex].value.trim().replace(",", ".");
-    let r = getInput()[rIndex].value.trim().replace(",", ".");
+    let r = getInput()[rIndex];
 
     //get elements for error text
-    let xError = getErrorTextField()[xIndex];
     let yError = getErrorTextField()[yIndex];
     let rError = getErrorTextField()[rIndex];
 
     //get input fields to give them error styles
-    let xField = document.getElementById("input-form:j_idt28");
     let yField = getInput()[yIndex];
     let rField = document.querySelectorAll("input[type=radio]");
 
-    let xFlag = false;
+    let xFlag = true;
     let yFlag = false;
-    let rFlag = false;
-
-    if (isNumber(x)){
-        if (checkX(x)){
-            setSingleSuccess(xError, xField, "", ["error-slider"])
-            xFlag = true;
-        } else {
-            setSingleError(xError, xField, "Choose number from the right range", ["error-slider"])
-        }
-    } else {
-        setSingleError(xError, xField, "Choose number", ["error-slider"])
-    }
+    let rFlag = validateRInput(r, rError, rField, rElement);
 
     if (isNumber(y)){
         if (checkY(y)){
+            yElement.setCustomValidity("");
             setSingleSuccess(yError, yField, "", ["error-text-input"]);
             yFlag = true;
         } else {
+            yElement.setCustomValidity(" ")
             setSingleError(yError, yField, " Choose number from -3...3", ["error-text-input"])
+
         }
     } else {
+        yElement.setCustomValidity(" ")
         setSingleError(yError, yField, "Type a number", ["error-text-input"])
     }
-
-   if (isNumber(r)){
-       if (checkR(r)){
-           setMultipleSuccess(rError, rField, "", ["error-text-input"])
-           rFlag = true;
-       } else {
-           setMultipleError(rError, rField, "Out of range", ["error-text-input"])
-       }
-   } else {
-       setMultipleError(rError, rField, "Choose a number", ["error-text-input"])
-   }
-
-    return xFlag && yFlag && rFlag;
+   return [xFlag, yFlag, rFlag];
 }
 
-
+function validateRInput(r, textError, errorFiled, rElement){
+    let rFlag = false;
+    if (checkR(r)){
+        rElement.forEach((el) => el.setCustomValidity(""))
+        setMultipleSuccess(textError, errorFiled, "", ["error-text-input"])
+        rFlag = true;
+    } else {
+        rElement.forEach((el) => el.setCustomValidity(" "))
+        setMultipleError(textError, errorFiled, "Choose a number", ["error-text-input"])
+    }
+    return rFlag;
+}
 
 
 //function for resetting input;
@@ -95,7 +85,7 @@ function resetInput(event){
     let yError = getErrorTextField()[yIndex];
     let rError = getErrorTextField()[rIndex];
 
-    //get input fields to give them error styles
+
     let xField = document.getElementById("input-form:j_idt28");
     let yField = getInput()[yIndex];
     let rField = document.querySelectorAll("input[type=radio]");
@@ -135,12 +125,9 @@ function isNumber(value) {
     return value != null && value !== "" && !isNaN(Number(value));
 }
 
-function checkX(value){
-    return value !== null && value >= -5 && value <= 5;
-}
 function checkY(value){
     return value >= -3 && value <= 3;
 }
 function checkR(value){
-    return value >= 1 && value <= 3;
+    return value != null;
 }
