@@ -4,8 +4,10 @@ const rIndex = 2;
 const regEx = /-?\d+/g;
 let submitBtn = document.querySelector(".submit-btn");
 let resetBtn = document.querySelector(".reset-btn");
-submitBtn.addEventListener('click', () => {
-    validateInput()
+
+
+submitBtn.addEventListener('click', (e) => {
+    validateInput(e);
 })
 resetBtn.addEventListener('click', (e) => resetInput(e))
 
@@ -25,9 +27,9 @@ function getErrorTextField(){
     return [xError, yError, rError];
 }
 
-function validateInput(){
+function validateInput(e){
     //receiving data from user
-
+    e.preventDefault();
 
     let yElement = getInput()[yIndex];
     let rElement = document.querySelectorAll(".x-button")
@@ -60,7 +62,7 @@ function validateInput(){
         yElement.setCustomValidity(" ")
         setSingleError(yError, yField, "Type a number", ["error-text-input"])
     }
-   return [xFlag, yFlag, rFlag];
+   return xFlag && yFlag && rFlag;
 }
 
 function validateRInput(r, textError, errorFiled, rElement){

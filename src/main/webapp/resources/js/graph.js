@@ -4,6 +4,7 @@ let rError = getErrorTextField()[rIndex];
 let rField = document.querySelectorAll("input[type=radio]");
 let rChecked = document.querySelectorAll(".x-button")
 
+
 for (let i = 0; i <rInput.length; i++) {
     rInput[i].onchange = () => {
         drawGraphByR(rInput[i].value)
@@ -50,11 +51,6 @@ function drawGraphByR(r){
             id: 'area-3',
             latex: 'y\\ >=\\ - ' + r + '-x * 2\\left\\{x<0\\right\\}\\left\\{y<0\\right\\}'
         })
-}
-function removeExpressions(id){
-    calculator.removeExpression({
-        id: id
-    });
 }
 //
 //
