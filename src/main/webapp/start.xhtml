@@ -13,15 +13,46 @@
     </ui:define>
 
     <ui:define name="upper-header">
+        <div class="date main-box-style">
+            <p class="day-of-the-week">
+            </p>
+        </div>
     </ui:define>
 
 
     <ui:define name="content">
         <div class="start-section">
-            <h:button outcome="main" value="Go to the main page" styleClass="start-btn" />
-            <span>Future clock</span>
-        </div>
-    </ui:define>
+            <h:button outcome="main" value="Go to the main page" styleClass="start-btn main-box-style" />
+                <div class="clock main-box-style">
+                    <div class="numbers">
+                        <p class="hours">
+                        </p>
+                    </div>
+                    <div class="colon">
+                        <p>:</p>
+                    </div>
 
+                    <div class="numbers">
+                        <p class="minutes">
+                        </p>
+                    </div>
+                    <div class="colon">
+                        <p>:</p>
+                    </div>
+
+                    <div class="numbers">
+                        <p class="seconds">
+                        </p>
+                    </div>
+                    <div class="am-pm">
+                        <p class="day-type">
+                        </p>
+                    </div>
+                    </div>
+                </div>
+    </ui:define>
+    <ui:define name="js">
+        <h:outputScript library="js" name="clock.js"/>
+    </ui:define>
 </ui:composition>
 </html>

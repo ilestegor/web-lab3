@@ -25,32 +25,32 @@
         <div class="section">
             <div class="table-wrapper">
                 <p>HISTORY TABLE</p>
-                <h:dataTable id="request-history-table" value="#{areaResultsBean.curResult}" var="result">
-                    <h:column>
-                        <f:facet name = "header">X</f:facet>
-                        #{result.coordinates.x}
-                    </h:column>
-                    <h:column>
-                        <f:facet name = "header">Y</f:facet>
-                        #{result.coordinates.y}
-                    </h:column>
-                    <h:column>
-                        <f:facet name = "header">R</f:facet>
-                        #{result.coordinates.r}
-                    </h:column>
-                    <h:column>
-                        <f:facet name = "header">Current Time</f:facet>
-                        #{result.currentTime}
-                    </h:column>
-                    <h:column>
-                        <f:facet name = "header">Execution Time</f:facet>
-                        #{result.executionTime}
-                    </h:column>
-                    <h:column>
-                        <f:facet name = "header">Hit Area</f:facet>
-                        #{result.hitType}
-                    </h:column>
-                </h:dataTable>
+                <p:dataTable var="result" id="request-history-table"
+                             paginator="true" rows="4"
+                             paginatorTemplate="{CurrentPageReport}
+                     {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}" value="#{areaResultsBean.curResult}">
+                    <p:column headerText="X">
+                        <h:outputText value="#{result.coordinates.x}"/>
+                    </p:column>
+
+                    <p:column headerText="Y">
+                        <h:outputText value="#{result.coordinates.y}"/>
+                    </p:column>
+
+                    <p:column headerText="R">
+                        <h:outputText value="#{result.coordinates.r}"/>
+                    </p:column>
+
+                    <p:column headerText="Current Time">
+                        <h:outputText value="#{result.currentTime}"/>
+                    </p:column>
+                    <p:column headerText="Exec Time">
+                        <h:outputText value="#{result.executionTime}"/>
+                    </p:column>
+                    <p:column headerText="Hit Area">
+                        <h:outputText value="#{result.hitType}"/>
+                    </p:column>
+                </p:dataTable>
             </div>
 
             <div class="image-wrapper">
@@ -98,10 +98,10 @@
                         </div>
                     </div>
                     <div class="input-container">
-                        <h:commandButton styleClass="btn submit-btn" value="Submit" type="submit">
+                        <h:commandButton styleClass="btn submit-btn main-box-style" value="Submit" type="submit">
                             <f:ajax execute="@form" listener="#{areaResultsBean.addNewResult()}" render="request-history-table x-error-field y-error-field r-error-field"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="btn reset-btn" value="Reset" type="reset"/>
+                        <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset" type="reset"/>
                     </div>
                 </h:form>
             </div>

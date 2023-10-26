@@ -2,12 +2,12 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    width: 90%;
+    width: 100%;
 }
 .section > div{
     border-radius: 10px;
     padding: 10px 10px;
-    max-height: 380px;
+    max-height: 350px;
     min-height: 320px;
     flex: 1;
     background-color: #232931;
@@ -103,9 +103,6 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    background-color: #303f9f;
-    color: white;
     font-weight: 700;
     transition: background 0.3s;
     -webkit-user-select: none;

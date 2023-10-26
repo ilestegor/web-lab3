@@ -12,12 +12,14 @@ body{
 
 
 /*common styles*/
-input[type=button]{
-    cursor: grab;
-    border: none;
+.main-box-style{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     background-color: #303f9f;
     color: white;
+}
+input[type=button]{
+    cursor: grab;
+    border: none;
     font-weight: 700;
     transition: background 0.3s;
     -webkit-user-select: none;
@@ -32,10 +34,13 @@ input[type=button]:hover{
     align-items: center;
     gap: 20px;
     height: 100vh;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
 }
 
 .header{
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
     padding: 10px 0;
     background-color: #232931;
