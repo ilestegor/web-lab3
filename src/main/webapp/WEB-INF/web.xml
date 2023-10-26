@@ -15,4 +15,8 @@
     <welcome-file-list>
         <welcome-file>start.xhtml</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+        <param-value>true</param-value>
+    </context-param>
 </web-app>

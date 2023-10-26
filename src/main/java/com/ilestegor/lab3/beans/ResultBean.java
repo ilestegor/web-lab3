@@ -1,5 +1,6 @@
 package com.ilestegor.lab3.beans;
 
+import com.ilestegor.lab3.utils.AreaChecker;
 import com.ilestegor.lab3.utils.HitType;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -13,16 +14,17 @@ public class ResultBean implements Serializable {
     @Inject
     private CoordinatesBean coordinatesBean;
     private String currentTime;
-    private String executionTime;
-    private HitType hitType;
+    private long executionTime;
+    private String hitType;
 
     public ResultBean() {
     }
 
-    public ResultBean(ResultBean resultBean){
+    public ResultBean(ResultBean resultBean) {
         coordinatesBean = resultBean.getCoordinates();
         CoordinatesBean curCords = new CoordinatesBean(coordinatesBean);
         resultBean.setCoordinates(curCords);
+        hitType = AreaChecker.checkArea(curCords.getX(), curCords.getY(), curCords.getR());
     }
 
     public CoordinatesBean getCoordinates() {
@@ -41,19 +43,20 @@ public class ResultBean implements Serializable {
         this.currentTime = currentTime;
     }
 
-    public String getExecutionTime() {
+
+    public long getExecutionTime() {
         return executionTime;
     }
 
-    public void setExecutionTime(String executionTime) {
+    public void setExecutionTime(long executionTime) {
         this.executionTime = executionTime;
     }
 
-    public HitType getHitType() {
+    public String getHitType() {
         return hitType;
     }
 
-    public void setHitType(HitType hitType) {
+    public void setHitType(String hitType) {
         this.hitType = hitType;
     }
 }

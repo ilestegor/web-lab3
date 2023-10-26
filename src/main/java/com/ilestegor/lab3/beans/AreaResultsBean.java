@@ -6,6 +6,8 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 @Named
@@ -14,15 +16,23 @@ public class AreaResultsBean implements Serializable {
     @Inject
     private ResultBean resultBean;
     private LinkedList<ResultBean> curResult;
+    private SimpleDateFormat simpleDateFormat;
 
 
     @PostConstruct
-    private void initialize(){
+    private void initialize() {
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
         curResult = new LinkedList<>();
     }
 
-    public void addNewResult(){
+    public void addNewResult() {
+        long startExec  = System.nanoTime();
         ResultBean newResult = new ResultBean(resultBean);
+        long endExec = System.nanoTime();
+        long executionTime = endExec - startExec;
+        newResult.setExecutionTime(executionTime);
+        String requestTime = simpleDateFormat.format(new Date(System.currentTimeMillis()));
+        newResult.setCurrentTime(requestTime);
         curResult.addLast(newResult);
     }
 

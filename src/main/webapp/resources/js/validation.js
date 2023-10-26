@@ -51,16 +51,13 @@ function validateInput(e){
     if (isNumber(y)){
         if (checkY(y)){
             yElement.setCustomValidity("");
-            setSingleSuccess(yError, yField, "", ["error-text-input"]);
             yFlag = true;
         } else {
             yElement.setCustomValidity(" ")
-            setSingleError(yError, yField, " Choose number from -3...3", ["error-text-input"])
-
         }
     } else {
         yElement.setCustomValidity(" ")
-        setSingleError(yError, yField, "Type a number", ["error-text-input"])
+
     }
    return xFlag && yFlag && rFlag;
 }
@@ -69,11 +66,9 @@ function validateRInput(r, textError, errorFiled, rElement){
     let rFlag = false;
     if (checkR(r)){
         rElement.forEach((el) => el.setCustomValidity(""))
-        setMultipleSuccess(textError, errorFiled, "", ["error-text-input"])
         rFlag = true;
     } else {
         rElement.forEach((el) => el.setCustomValidity(" "))
-        setMultipleError(textError, errorFiled, "Choose a number", ["error-text-input"])
     }
     return rFlag;
 }
@@ -93,33 +88,33 @@ function resetInput(event){
     let rField = document.querySelectorAll("input[type=radio]");
 
     form.reset();
-    setSingleSuccess(yError, yField, "", ["error-text-input"]);
-    setMultipleSuccess(rError, rField, "", ["error-text-input"]);
-    setMultipleSuccess(xError, xField, "", ["error-slider"]);
 
     calculator.setState(initState);
 }
 //function for setting error styles and error text
-function setMultipleError(elem1, elem2, message, className){
-    elem1.innerText = message;
-    for (let i = 0; i < elem2.length; i++) {
-        elem2[i].classList.add(className);
-    }
-}
-function setSingleError(elem1, elem2, message, ...className){
-    elem1.innerText = message;
-    elem2.classList.add(className);
-}
-function setMultipleSuccess(elem1, elem2, message, ...className){
-    elem1.innerText = message;
-    for (let i = 0; i < elem2.length; i++) {
-        elem2[i].classList.remove(className);
-    }
-}
-function setSingleSuccess(elem1, elem2, message, ...className){
-    elem1.innerText = message;
-    elem2.classList.remove(className);
-}
+// function setMultipleError(elem1, elem2, message, className){
+//     elem1.innerText = message;
+//     for (let i = 0; i < elem2.length; i++) {
+//         elem2[i].classList.add(className);
+//     }
+// }
+//
+// let s = document.getElementById("aj");
+// console.log(s)
+// function setSingleError(elem1, elem2, message, ...className){
+//     elem1.innerText = message;
+//     elem2.classList.add(className);
+// }
+// function setMultipleSuccess(elem1, elem2, message, ...className){
+//     elem1.innerText = message;
+//     for (let i = 0; i < elem2.length; i++) {
+//         elem2[i].classList.remove(className);
+//     }
+// }
+// function setSingleSuccess(elem1, elem2, message, ...className){
+//     elem1.innerText = message;
+//     elem2.classList.remove(className);
+// }
 
 
 //helper functions for main validation function
