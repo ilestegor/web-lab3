@@ -1,39 +1,51 @@
-body .ui-paginator{
+body .ui-paginator {
     background: transparent;
 }
-body .ui-datatable .ui-paginator.ui-paginator-top{
+
+body .ui-datatable .ui-paginator.ui-paginator-top {
     border: 1px solid white;
 }
-body .ui-datatable .ui-paginator.ui-paginator-bottom{
+
+body .ui-datatable .ui-paginator.ui-paginator-bottom {
     display: none;
 }
-body .ui-paginator .ui-paginator-current, body .ui-paginator .ui-paginator-rpp-options{
+
+body .ui-paginator .ui-paginator-current, body .ui-paginator .ui-paginator-rpp-options {
     color: white;
 }
-body .ui-paginator .ui-paginator-next{
-    color: white;
-    border: 1px solid white;
-}
-body .ui-paginator .ui-paginator-prev{
+
+body .ui-paginator .ui-paginator-next {
     color: white;
     border: 1px solid white;
 }
-body .ui-datatable thead th{
+
+body .ui-paginator .ui-paginator-prev {
+    color: white;
+    border: 1px solid white;
+}
+
+body .ui-datatable thead th {
     background: transparent;
 }
-body .ui-datatable thead th{
+
+body .ui-datatable thead th {
     border-width: 1px 1px;
     text-align: center;
-    padding: 4px 10px;
+    padding: 4px 5px;
 }
-body .ui-datatable thead th{
+
+body .ui-datatable thead th {
     color: white;
+    font-size: 13px;
 }
-body .ui-datatable .ui-datatable-data>tr>td{
+
+body .ui-datatable .ui-datatable-data > tr > td {
     border: 1px solid white;
     padding: 0;
+    font-size: 13px;
 }
-body .ui-datatable .ui-datatable-data>tr{
+
+body .ui-datatable .ui-datatable-data > tr {
     background: transparent;
 }
 

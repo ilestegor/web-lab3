@@ -1,7 +1,6 @@
 package com.ilestegor.lab3.beans;
 
 import com.ilestegor.lab3.utils.AreaChecker;
-import com.ilestegor.lab3.utils.HitType;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;

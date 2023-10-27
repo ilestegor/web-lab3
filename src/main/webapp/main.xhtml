@@ -17,10 +17,10 @@
 
     <ui:define name="upper-header">
 
-            <h:link outcome="start" styleClass="close-btn"/>
+        <h:link outcome="start" styleClass="close-btn"/>
 
     </ui:define>
-    
+
     <ui:define name="content">
         <div class="section">
             <div class="table-wrapper">
@@ -53,11 +53,11 @@
                 </p:dataTable>
             </div>
 
+
             <div class="image-wrapper">
                 <div id="calculator">
                 </div>
             </div>
-
             <div class="input-wrapper">
                 <h:outputText value="INPUT FORM"/>
                 <h:form id="input-form" styleClass="input-form">
@@ -69,25 +69,29 @@
                                 <f:converter converterId="customDoubleConverter"/>
                                 <f:validator validatorId="validatorX"/>
                             </h:inputHidden>
-                            <p:slider for="x" display="output" minValue="-5" maxValue="5" range="1" displayTemplate="Set ratio to {value}"/>
+                            <p:slider for="x" display="output" minValue="-5" maxValue="5" range="1"
+                                      displayTemplate="Set ratio to {value}"/>
                             <h:message for="x" id="x-error-field" showDetail="true" styleClass="error"/>
                         </div>
                     </div>
                     <div class="input-container">
                         <p>Y value: </p>
                         <div class="error-container input-box">
-                            <h:inputText id="y-input" styleClass="text-input y-text" a:placeholder="Enter value from -3...3" value="#{resultBean.coordinates.y}" maxlength="7">
+                            <h:inputText id="y-input" styleClass="text-input y-text"
+                                         a:placeholder="Enter value from -3...3" value="#{resultBean.coordinates.y}"
+                                         maxlength="7">
                                 <f:converter converterId="customDoubleConverter"/>
                                 <f:validator validatorId="validatorY"/>
-                                <p:clientValidator event="change"/>
                             </h:inputText>
-                            <h:message for="y-input" styleClass="error"  rendered="true" showDetail="true" id="y-error-field"/>
+                            <h:message for="y-input" styleClass="error" rendered="true" showDetail="true"
+                                       id="y-error-field"/>
                         </div>
                     </div>
                     <div class="input-container">
                         <p>R value: </p>
                         <div class="error-container input-box">
-                            <h:selectOneRadio value="#{resultBean.coordinates.r}" id="r" validator="validatorR" converter="customDoubleConverter">
+                            <h:selectOneRadio value="#{resultBean.coordinates.r}" id="r" validator="validatorR"
+                                              converter="customDoubleConverter">
                                 <f:selectItem itemValue="1" itemLabel="1"/>
                                 <f:selectItem itemValue="1.5" itemLabel="1.5"/>
                                 <f:selectItem itemValue="2" itemLabel="2"/>
@@ -99,20 +103,44 @@
                     </div>
                     <div class="input-container">
                         <h:commandButton styleClass="btn submit-btn main-box-style" value="Submit" type="submit">
-                            <f:ajax execute="@form" listener="#{areaResultsBean.addNewResult()}" render="request-history-table x-error-field y-error-field r-error-field"/>
+                            <f:ajax execute="@form" listener="#{areaResultsBean.addNewResult()}"
+                                    render="request-history-table x-error-field y-error-field r-error-field"/>
                         </h:commandButton>
                         <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset" type="reset"/>
                     </div>
                 </h:form>
+
+
+                <h:form id="graphSelect">
+                    <p:growl showDetail="true" id="graph-x-error" life="2000"/>
+                    <h:inputHidden id="graph-x" value="#{resultBean.coordinates.x}">
+                        <f:validator validatorId="validatorX"/>
+                    </h:inputHidden>
+                    <h:inputHidden id="graph-y" value="#{resultBean.coordinates.y}">
+                        <f:validator validatorId="validatorY"/>
+                    </h:inputHidden>
+                    <h:inputHidden id="graph-r" value="#{resultBean.coordinates.r}">
+                        <f:validator validatorId="validatorR"/>
+                    </h:inputHidden>
+                    <p:remoteCommand name="updateBeanValues" action="#{areaResultsBean.addNewResult()}"
+                                     update="request-history-table graph-x-error"/>
+                </h:form>
+
             </div>
         </div>
     </ui:define>
     <ui:define name="js">
-        <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6" type="text/javascript">
+        <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"
+                type="text/javascript">
         </script>
         <h:outputScript library="js" name="radioElement.js"/>
         <h:outputScript library="js" name="validation.js"/>
         <h:outputScript library="js" name="graph.js"/>
+        <h:outputScript>
+            <ui:repeat value="#{areaResultsBean.curResult}" var="res">
+                drawXY(#{res.coordinates.x}, #{res.coordinates.y});
+            </ui:repeat>
+        </h:outputScript>
     </ui:define>
 </ui:composition>
 

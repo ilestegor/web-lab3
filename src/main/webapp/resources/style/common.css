@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');*{
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,28 +8,32 @@
     font-size: 14px;
     font-family: 'Roboto Mono', monospace;
 }
-body{
+
+body {
     background-color: #37474f;
 }
 
 
 /*common styles*/
-.main-box-style{
+.main-box-style {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     background-color: #303f9f;
     color: white;
 }
-input[type=button]{
+
+input[type=button] {
     cursor: grab;
     border: none;
     font-weight: 700;
     transition: background 0.3s;
     -webkit-user-select: none;
 }
-input[type=button]:hover{
+
+input[type=button]:hover {
     background: #1a237e;
 }
-.main{
+
+.main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +45,7 @@ input[type=button]:hover{
     position: relative;
 }
 
-.header{
+.header {
     width: 100%;
     border-radius: 10px;
     padding: 10px 0;
@@ -48,19 +54,22 @@ input[type=button]:hover{
     box-shadow: 0 0 20px -10px white;
     transition: all 0.5s ease;
 }
-.header p:first-child{
+
+.header p:first-child {
     margin-bottom: 5px;
 }
-.header:hover{
+
+.header:hover {
     transform: scale(1.05);
 }
 
 
-@media screen and (max-width: 700px){
-    .section{
+@media screen and (max-width: 700px) {
+    .section {
         flex-direction: column;
     }
-    .main{
+
+    .main {
         height: 180%;
     }
 }

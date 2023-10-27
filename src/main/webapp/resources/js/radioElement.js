@@ -1,4 +1,3 @@
-
 let oldRadioElem = document.querySelectorAll(".input-wrapper td:nth-of-type(n)")
 for (let oldElem of oldRadioElem) {
     let tdElement = document.querySelector(".input-wrapper td:nth-of-type(n)")

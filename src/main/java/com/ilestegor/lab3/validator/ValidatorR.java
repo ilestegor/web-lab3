@@ -11,19 +11,20 @@ import jakarta.faces.validator.ValidatorException;
 public class ValidatorR implements Validator<Double> {
     private static final double R_MAX = 3.0;
     private static final double R_MIN = 1.0;
+
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Double aDouble) throws ValidatorException {
 
-        if (aDouble == null){
+        if (aDouble == null) {
             throw new ValidatorException(
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid R",
                             "R value cannot be empty and must be int"));
         }
 
-        if (aDouble > R_MAX || aDouble < R_MIN){
+        if (aDouble > R_MAX || aDouble < R_MIN) {
             System.out.println(aDouble);
             throw new ValidatorException(
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid R",
                             "R value is out of range"));
         }
     }

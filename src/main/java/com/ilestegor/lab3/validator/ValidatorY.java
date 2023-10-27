@@ -23,7 +23,7 @@ public class ValidatorY implements Validator<Double> {
         }
         if (yValue < Y_MIN || yValue > Y_MAX) {
             throw new ValidatorException(
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Y",
                             "Choose number from -3...3"));
         }
 

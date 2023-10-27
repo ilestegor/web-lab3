@@ -20,7 +20,7 @@ window.onload = () => {
     }, 12000)
 }
 
-function time(){
+function time() {
     //create Date object
     let date = new Date()
     let hours = date.getHours();
@@ -39,27 +39,29 @@ function time(){
 }
 
 
-
-function changeToTwelveHourClock(hours){
+function changeToTwelveHourClock(hours) {
     //change to 12-hour format
     return (hours > 12) ? (hours - 12) : hours;
 
 }
-function addZero(value){
+
+function addZero(value) {
     return (value <= 9) ? ("0" + value) : value;
 }
-function amPm(){
+
+function amPm() {
     let date = new Date();
     let hours = date.getHours();
     let amPm = document.querySelector(".day-type");
 
     (hours >= 12) ? amPm.innerText = "PM" : amPm.innerText = "AM";
 }
-function whatDay(){
+
+function whatDay() {
     let date = new Date();
     let day = date.getDay();
     let dayNumber = date.getDate();
     let month = new Intl.DateTimeFormat("en-US", options).format(new Date());
-    document.querySelector(".day-of-the-week").innerHTML = month + ", " + dayNumber +  " " +  days[day]
+    document.querySelector(".day-of-the-week").innerHTML = month + ", " + dayNumber + " " + days[day]
 
 }

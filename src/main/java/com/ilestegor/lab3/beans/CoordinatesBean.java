@@ -5,6 +5,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
+
 @Named
 @ApplicationScoped
 public class CoordinatesBean implements Serializable {

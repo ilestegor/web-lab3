@@ -1,10 +1,11 @@
-.section{
+.section {
     display: flex;
     justify-content: center;
     gap: 10px;
     width: 100%;
 }
-.section > div{
+
+.section > div {
     border-radius: 10px;
     padding: 10px 10px;
     max-height: 350px;
@@ -14,87 +15,103 @@
     color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
-.x-value{
+
+.x-value {
     font-size: 11px;
 }
-.image-wrapper{
+
+.image-wrapper {
     display: flex;
     position: relative;
     justify-content: center;
 }
-#calculator{
+
+#calculator {
     width: 100%;
     max-width: 600px;
     min-width: 200px;
 }
-.input-wrapper{
+
+.input-wrapper {
     white-space: nowrap;
 }
 
-#request-history-table{
-    border-collapse: collapse;
+#request-history-table {
     margin: 10px auto 0 auto;
-    table-layout: fixed;
 }
-.table-wrapper{
+
+.table-wrapper {
     overflow: scroll;
 }
-#request-history-table > tr, td, th{
+
+#request-history-table > tr, td, th {
     border: 1px solid white;
-    padding: 8px 8px;
     color: white;
 }
-.input-wrapper td:nth-of-type(n){
+
+.input-wrapper td:nth-of-type(n) {
     border: none;
     white-space: normal;
     word-wrap: break-word;
     padding: 0;
 }
-.input-wrapper td:nth-of-type(n) label{
+
+.input-wrapper td:nth-of-type(n) label {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.input-wrapper table:first-of-type{
+
+.input-wrapper table:first-of-type {
     width: 100%;
     max-width: 200px;
 }
-.input-container{
+
+.input-container {
     display: flex;
     align-items: stretch;
     justify-content: center;
     gap: 10px;
 }
-.input-container > p{
+
+.input-container > p {
     margin-right: 18px;
 }
-.input-container:not(:nth-child(2)){
+
+.input-container:not(:nth-child(2)) {
     margin-top: 25px;
 }
-.input-container:nth-child(2){
+
+.input-container:nth-child(2) {
     margin-top: 15px;
 }
-.x-input-container{
+
+.x-input-container {
     text-align: left;
 }
-.ui-slider{
+
+.ui-slider {
     margin-top: 5px;
 }
-.input-box{
+
+.input-box {
     width: 100%;
     max-width: 200px;
     min-width: 160px;
 }
-.text-input{
+
+.text-input {
     text-align: left;
     border-radius: 10px;
     border: none;
     padding: 3px 0 3px 6px;
 }
-.text-input::placeholder{
+
+.text-input::placeholder {
     font-size: 12px;
 }
+
 .btn {
     width: 100%;
     max-width: 135px;
@@ -107,10 +124,12 @@
     transition: background 0.3s;
     -webkit-user-select: none;
 }
-.btn:hover{
+
+.btn:hover {
     background: #1a237e
 }
-.close-btn{
+
+.close-btn {
     box-sizing: border-box;
     display: inline-block;
     float: right;
@@ -126,45 +145,52 @@
     right: 30px;
 
 }
+
 .close-btn:after,
-.close-btn:before{
+.close-btn:before {
     content: "";
     position: absolute;
     background-color: #232931;
 }
-.close-btn:after{
+
+.close-btn:after {
     width: 2px;
     height: 30px;
     top: 1px;
     left: 15px;
     transform: rotate(45deg);
 }
-.close-btn:before{
+
+.close-btn:before {
     width: 30px;
     height: 2px;
     top: 15px;
     left: 1px;
     transform: rotate(45deg);
 }
-.close-btn:hover:after{
+
+.close-btn:hover:after {
     transform: rotate(-90deg);
     transition: transform 0.5s;
 }
-.close-btn:hover:before{
+
+.close-btn:hover:before {
     transform: rotate(-180deg);
     transition: transform 0.5s;
 }
-.close-btn-wrapper{
+
+.close-btn-wrapper {
     position: absolute;
     top: 20px;
     right: 20px;
 }
-.x-button{
+
+.x-button {
     display: none;
 }
 
 /*custom radio*/
-.custom-x-button{
+.custom-x-button {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -173,7 +199,7 @@
     cursor: pointer;
 }
 
-.custom-x-button::before{
+.custom-x-button::before {
     content: "";
     display: block;
     position: absolute;
@@ -187,15 +213,17 @@
     opacity: 0;
     transition: all .5s;
 }
-.x-button:checked + .custom-x-button{
+
+.x-button:checked + .custom-x-button {
     border-color: white;
 }
-.x-button:checked + .custom-x-button::before{
+
+.x-button:checked + .custom-x-button::before {
     opacity: 1;
 }
 
 /*errors*/
-.error{
+.error {
     font-size: 11px;
     color: #e84545;
     text-align: left;
@@ -205,14 +233,17 @@
     display: inline-block;
     white-space: normal;
 }
-.error-container{
+
+.error-container {
     display: flex;
     flex-direction: column;
 }
-.ui-slider.error-slider{
+
+.ui-slider.error-slider {
     background: red;
 }
-.error-text-input{
+
+.error-text-input {
     border: 1px solid red;
 }
 

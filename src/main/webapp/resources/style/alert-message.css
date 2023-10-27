@@ -1,0 +1,10 @@
+body .ui-growl .ui-growl-item-container.ui-growl-error .ui-growl-image {
+    display: none;
+}
+
+body .ui-growl .ui-growl-item-container .ui-growl-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}

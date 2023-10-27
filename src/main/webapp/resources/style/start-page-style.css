@@ -1,12 +1,12 @@
 /*styles for start page*/
-.start-btn{
+.start-btn {
     width: 100%;
     max-width: 200px;
     padding: 10px 5px;
     border-radius: 10px;
 }
 
-.start-section{
+.start-section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -15,7 +15,7 @@
 
 
 /*clock*/
-.clock{
+.clock {
     display: flex;
     justify-content: center;
     width: 200px;
@@ -23,20 +23,24 @@
     border-radius: 10px;
     text-align: center;
 }
-.clock p{
+
+.clock p {
     font-size: 21px;
     color: white;
 }
-.am-pm{
+
+.am-pm {
     position: relative;
 }
-p.day-type{
+
+p.day-type {
     position: absolute;
     bottom: 4px;
     margin-left: 2px;
     font-size: 12px;
 }
-.date{
+
+.date {
     position: absolute;
     top: 60px;
     left: 0;

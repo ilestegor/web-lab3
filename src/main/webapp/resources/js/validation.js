@@ -7,12 +7,16 @@ let resetBtn = document.querySelector(".reset-btn");
 
 
 submitBtn.addEventListener('click', (e) => {
-    validateInput(e);
+    if (validateInput(e)) {
+        let x = document.getElementById("input-form:x").value;
+        let y = document.getElementById("input-form:y-input").value;
+        drawXY(x, y)
+    }
 })
 resetBtn.addEventListener('click', (e) => resetInput(e))
 
 //get data from user
-function getInput(){
+function getInput() {
     let x = document.querySelector(".x-value").textContent.trim().match(regEx);
     let y = document.getElementById("input-form:y-input");
     let r = document.querySelector("input[type=radio]:checked");
@@ -20,36 +24,36 @@ function getInput(){
 }
 
 //get fields for error messages
-function getErrorTextField(){
+function getErrorTextField() {
     let xError = document.getElementById("x-error-field");
     let yError = document.getElementById("y-error-field");
     let rError = document.getElementById("r-error-field");
     return [xError, yError, rError];
 }
 
-function validateInput(e){
+function validateInput(e) {
     //receiving data from user
     e.preventDefault();
 
+    let xElement = document.querySelector(".ui-slider");
     let yElement = getInput()[yIndex];
     let rElement = document.querySelectorAll(".x-button")
+    let x = getInput()[xIndex]
     let y = getInput()[yIndex].value.trim().replace(",", ".");
     let r = getInput()[rIndex];
 
-    //get elements for error text
-    let yError = getErrorTextField()[yIndex];
-    let rError = getErrorTextField()[rIndex];
 
-    //get input fields to give them error styles
-    let yField = getInput()[yIndex];
-    let rField = document.querySelectorAll("input[type=radio]");
-
-    let xFlag = true;
+    let xFlag = false;
     let yFlag = false;
-    let rFlag = validateRInput(r, rError, rField, rElement);
+    let rFlag = validateRInput(r, rElement);
 
-    if (isNumber(y)){
-        if (checkY(y)){
+    if (isNumber(x) && checkX(x)) {
+        xFlag = true;
+    }
+
+
+    if (isNumber(y)) {
+        if (checkY(y)) {
             yElement.setCustomValidity("");
             yFlag = true;
         } else {
@@ -59,12 +63,12 @@ function validateInput(e){
         yElement.setCustomValidity(" ")
 
     }
-   return xFlag && yFlag && rFlag;
+    return xFlag && yFlag && rFlag;
 }
 
-function validateRInput(r, textError, errorFiled, rElement){
+function validateRInput(r, rElement) {
     let rFlag = false;
-    if (checkR(r)){
+    if (checkR(r)) {
         rElement.forEach((el) => el.setCustomValidity(""))
         rFlag = true;
     } else {
@@ -75,8 +79,8 @@ function validateRInput(r, textError, errorFiled, rElement){
 
 
 //function for resetting input;
-function resetInput(event){
-    let form  = document.getElementById("input-form");
+function resetInput(event) {
+    let form = document.getElementById("input-form");
 
     let xError = getErrorTextField()[xIndex];
     let yError = getErrorTextField()[yIndex];
@@ -91,30 +95,6 @@ function resetInput(event){
 
     calculator.setState(initState);
 }
-//function for setting error styles and error text
-// function setMultipleError(elem1, elem2, message, className){
-//     elem1.innerText = message;
-//     for (let i = 0; i < elem2.length; i++) {
-//         elem2[i].classList.add(className);
-//     }
-// }
-//
-// let s = document.getElementById("aj");
-// console.log(s)
-// function setSingleError(elem1, elem2, message, ...className){
-//     elem1.innerText = message;
-//     elem2.classList.add(className);
-// }
-// function setMultipleSuccess(elem1, elem2, message, ...className){
-//     elem1.innerText = message;
-//     for (let i = 0; i < elem2.length; i++) {
-//         elem2[i].classList.remove(className);
-//     }
-// }
-// function setSingleSuccess(elem1, elem2, message, ...className){
-//     elem1.innerText = message;
-//     elem2.classList.remove(className);
-// }
 
 
 //helper functions for main validation function
@@ -122,9 +102,14 @@ function isNumber(value) {
     return value != null && value !== "" && !isNaN(Number(value));
 }
 
-function checkY(value){
+function checkX(value) {
+    return value != null;
+}
+
+function checkY(value) {
     return value >= -3 && value <= 3;
 }
-function checkR(value){
+
+function checkR(value) {
     return value != null;
 }
