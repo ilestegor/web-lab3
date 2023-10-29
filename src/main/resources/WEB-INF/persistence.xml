@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+       <persistence-unit name="ResultUnit">
+           <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+           <class>com.ilestegor.lab3.beans.ResultBean</class>
+           <class>com.ilestegor.lab3.beans.CoordinatesBean</class>
+
+           <properties>
+               <property name="connection.url" value="jdbc:postgresql://localhost:5432/studs"/>
+               <property name="connection.driver_class" value="org.postgresql.Driver"/>
+               <property name="connection.pool_size" value="100"/>
+               <property name="current_session_context_class" value="thread"/>
+               <property name="show_sql" value="true"/>
+               <property name="dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
+               <property name="hibernate.hbm2ddl.auto" value="update"/>
+           </properties>
+       </persistence-unit>
+</persistence>

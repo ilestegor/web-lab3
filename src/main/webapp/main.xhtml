@@ -77,14 +77,14 @@
                     <div class="input-container">
                         <p>Y value: </p>
                         <div class="error-container input-box">
-                            <h:inputText id="y-input" styleClass="text-input y-text"
-                                         a:placeholder="Enter value from -3...3" value="#{resultBean.coordinates.y}"
-                                         maxlength="7">
-                                <f:converter converterId="customDoubleConverter"/>
-                                <f:validator validatorId="validatorY"/>
-                            </h:inputText>
-                            <h:message for="y-input" styleClass="error" rendered="true" showDetail="true"
-                                       id="y-error-field"/>
+                                <h:inputText id="y-input" styleClass="text-input y-text"
+                                             a:placeholder="Enter value from -3...3" value="#{resultBean.coordinates.y}"
+                                             maxlength="7" onfocus="this.value=''">
+                                    <f:converter converterId="customDoubleConverter"/>
+                                    <f:validator validatorId="validatorY"/>
+                                </h:inputText>
+                                <h:message for="y-input" styleClass="error" rendered="true" showDetail="true"
+                                           id="y-error-field"/>
                         </div>
                     </div>
                     <div class="input-container">
@@ -92,11 +92,11 @@
                         <div class="error-container input-box">
                             <h:selectOneRadio value="#{resultBean.coordinates.r}" id="r" validator="validatorR"
                                               converter="customDoubleConverter">
-                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="1" itemLabel="1.0"/>
                                 <f:selectItem itemValue="1.5" itemLabel="1.5"/>
-                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="2" itemLabel="2.0"/>
                                 <f:selectItem itemValue="2.5" itemLabel="2.5"/>
-                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="3" itemLabel="3.0"/>
                             </h:selectOneRadio>
                             <h:message for="r" showDetail="true" styleClass="error" id="r-error-field"/>
                         </div>
@@ -107,8 +107,9 @@
                                     render="request-history-table x-error-field y-error-field r-error-field"
                                     resetValues="true"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset" type="reset"
-                                         immediate="true"/>
+                        <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset">
+                            <f:ajax execute="@form" listener="#{areaResultsBean.clearResult()}" render="request-history-table" immediate="true"/>
+                        </h:commandButton>
                     </div>
                 </h:form>
                 <h:form id="graphSelect">

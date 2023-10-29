@@ -8,6 +8,7 @@ let resetBtn = document.querySelector(".reset-btn");
 if (document.readyState === 'loading') {
     document.getElementById("input-form:x").value = "";
     getInput()[yIndex].value = "";
+
 }
 submitBtn.addEventListener('click', (e) => {
     if (validateInput(e)) {
@@ -15,10 +16,10 @@ submitBtn.addEventListener('click', (e) => {
         let y = getInput()[yIndex].value;
         let r = document.querySelector("input[type=radio]:checked")
         addDotsForForm(x, y);
-        drawXY(parseInt(x), parseInt(y), r.value)
+        drawXY(parseFloat(x), parseFloat(y), parseFloat(r.value))
     }
 })
-resetBtn.addEventListener('click', (e) => resetInput(e))
+resetBtn.addEventListener('click', (e) => resetInput())
 
 //get data from user
 function getInput() {
@@ -27,7 +28,6 @@ function getInput() {
     let r = document.querySelector("input[type=radio]:checked");
     return [x, y, r];
 }
-
 //get fields for error messages
 function getErrorTextField() {
     let xError = document.getElementById("input-form:x-error-field");
@@ -85,21 +85,16 @@ function validateRInput(r, rElement) {
 
 //function for resetting input;
 function resetInput(event) {
-    event.preventDefault();
     let form = document.getElementById("input-form");
 
     let xError = getErrorTextField()[xIndex];
     let yError = getErrorTextField()[yIndex];
     let rError = getErrorTextField()[rIndex];
 
-
-    let xField = document.getElementById("input-form:j_idt28");
-    let yField = getInput()[yIndex];
-    let rField = document.querySelectorAll("input[type=radio]");
     xError.innerText = "";
     yError.innerText = "";
     rError.innerText = "";
-    localStorage.clear()
+    dots.length = 0;
     form.reset();
 
     calculator.setState(initState);
@@ -126,4 +121,14 @@ function checkY(value) {
 
 function checkR(value) {
     return value !== null;
+}
+function checkArea(x, y, r) {
+    if ((y <= r) && (x >= 0 && x <= r / 2) && y >= 0) {
+        return true;
+    } else if ((x * x + y * y <= (r / 2) * (r / 2)) && x <= 0 && y >= 0) {
+        return true;
+    } else if ((y >= -r - (x * 2)) && x <= 0 && y <= 0) {
+        return true;
+    }
+    return false;
 }

@@ -40,7 +40,9 @@ public class AreaResultsBean implements Serializable {
         newResult.getCoordinates().setR(Double.parseDouble(decimalFormat.format(newResult.getCoordinates().getR())));
         curResult.addLast(newResult);
     }
-
+    public void clearResult(){
+        curResult.clear();
+    }
 
     public ResultBean getResultBean() {
         return resultBean;

@@ -45,7 +45,7 @@ calculator.observeEvent('change', () => {
     dots.forEach((x) => {
         let nums = x.match(cordsPattern);
         if (rValue != null && nums != null) {
-            drawXY(nums[1], nums[2], rValue.value)
+            drawXY(parseFloat(nums[1]), parseFloat(nums[2]), parseFloat(rValue.value))
         }
     })
 })
@@ -84,7 +84,7 @@ function handleGraphClick(e) {
         if (checkY(mathCoordinates.y) && checkXArea(mathCoordinates.x)) {
             addDots(mathCoordinates.x, mathCoordinates.y)
         }
-        drawXY(mathCoordinates.x, mathCoordinates.y, rValue.value)
+        drawXY(parseFloat(mathCoordinates.x), parseFloat(mathCoordinates.y), parseFloat(rValue.value))
     }
     updateBeanValues();
 }
@@ -115,15 +115,6 @@ function drawDots(x, y, color) {
     })
 }
 
-function checkArea(x, y, r) {
-    if ((y <= r) && (x >= 0 && x <= r / 2) && y >= 0) {
-        return true;
-    } else if ((x * x + y * y <= (r / 2) * (r / 2)) && x <= 0 && y >= 0) {
-        return true;
-    } else if ((y >= -r - (x * 2)) && x <= 0 && y <= 0) {
-        return true;
-    }
-    return false;
-}
+
 
 
