@@ -60,7 +60,7 @@
             </div>
             <div class="input-wrapper">
                 <h:outputText value="INPUT FORM"/>
-                <h:form id="input-form" styleClass="input-form">
+                <h:form id="input-form" styleClass="input-form" autocomplete="off">
                     <div class="input-container">
                         <p>X value: </p>
                         <div class="x-input-container input-box">
@@ -104,13 +104,13 @@
                     <div class="input-container">
                         <h:commandButton styleClass="btn submit-btn main-box-style" value="Submit" type="submit">
                             <f:ajax execute="@form" listener="#{areaResultsBean.addNewResult()}"
-                                    render="request-history-table x-error-field y-error-field r-error-field"/>
+                                    render="request-history-table x-error-field y-error-field r-error-field"
+                                    resetValues="true"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset" type="reset"/>
+                        <h:commandButton styleClass="btn reset-btn main-box-style" value="Reset" type="reset"
+                                         immediate="true"/>
                     </div>
                 </h:form>
-
-
                 <h:form id="graphSelect">
                     <p:growl showDetail="true" id="graph-x-error" life="2000"/>
                     <h:inputHidden id="graph-x" value="#{resultBean.coordinates.x}">
@@ -125,7 +125,6 @@
                     <p:remoteCommand name="updateBeanValues" action="#{areaResultsBean.addNewResult()}"
                                      update="request-history-table graph-x-error"/>
                 </h:form>
-
             </div>
         </div>
     </ui:define>
@@ -138,7 +137,8 @@
         <h:outputScript library="js" name="graph.js"/>
         <h:outputScript>
             <ui:repeat value="#{areaResultsBean.curResult}" var="res">
-                drawXY(#{res.coordinates.x}, #{res.coordinates.y});
+                dots.push(`#{res.coordinates.x}#{res.coordinates.y}`);
+                drawDots(#{res.coordinates.x}, #{res.coordinates.y}, redColor);
             </ui:repeat>
         </h:outputScript>
     </ui:define>

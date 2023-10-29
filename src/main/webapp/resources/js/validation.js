@@ -4,13 +4,18 @@ const rIndex = 2;
 const regEx = /-?\d+/g;
 let submitBtn = document.querySelector(".submit-btn");
 let resetBtn = document.querySelector(".reset-btn");
-
-
+//reset values when reloading
+if (document.readyState === 'loading') {
+    document.getElementById("input-form:x").value = "";
+    getInput()[yIndex].value = "";
+}
 submitBtn.addEventListener('click', (e) => {
     if (validateInput(e)) {
         let x = document.getElementById("input-form:x").value;
-        let y = document.getElementById("input-form:y-input").value;
-        drawXY(x, y)
+        let y = getInput()[yIndex].value;
+        let r = document.querySelector("input[type=radio]:checked")
+        addDotsForForm(x, y);
+        drawXY(parseInt(x), parseInt(y), r.value)
     }
 })
 resetBtn.addEventListener('click', (e) => resetInput(e))
@@ -25,9 +30,9 @@ function getInput() {
 
 //get fields for error messages
 function getErrorTextField() {
-    let xError = document.getElementById("x-error-field");
-    let yError = document.getElementById("y-error-field");
-    let rError = document.getElementById("r-error-field");
+    let xError = document.getElementById("input-form:x-error-field");
+    let yError = document.getElementById("input-form:y-error-field");
+    let rError = document.getElementById("input-form:r-error-field");
     return [xError, yError, rError];
 }
 
@@ -80,6 +85,7 @@ function validateRInput(r, rElement) {
 
 //function for resetting input;
 function resetInput(event) {
+    event.preventDefault();
     let form = document.getElementById("input-form");
 
     let xError = getErrorTextField()[xIndex];
@@ -90,7 +96,10 @@ function resetInput(event) {
     let xField = document.getElementById("input-form:j_idt28");
     let yField = getInput()[yIndex];
     let rField = document.querySelectorAll("input[type=radio]");
-
+    xError.innerText = "";
+    yError.innerText = "";
+    rError.innerText = "";
+    localStorage.clear()
     form.reset();
 
     calculator.setState(initState);
@@ -106,10 +115,15 @@ function checkX(value) {
     return value != null;
 }
 
+function checkXArea(value) {
+    return value >= -5 && value <= 5;
+
+}
+
 function checkY(value) {
     return value >= -3 && value <= 3;
 }
 
 function checkR(value) {
-    return value != null;
+    return value !== null;
 }

@@ -23,6 +23,6 @@ public class AreaChecker {
     }
 
     private static boolean checkThirdArea(double x, double y, double r) {
-        return (y >= -r - (x * x)) && x <= 0 && y <= 0;
+        return (y >= -r - (x * 2)) && x <= 0 && y <= 0;
     }
 }
