@@ -11,7 +11,8 @@ target/
 *.mvn
 mvnw
 *.cmd
-*.cfg
+resources/myProperties.properties
+
 ### Eclipse ###
 .apt_generated
 .classpath
