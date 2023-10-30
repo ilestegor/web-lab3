@@ -11,7 +11,7 @@ target/
 *.mvn
 mvnw
 *.cmd
-
+*.cfg
 ### Eclipse ###
 .apt_generated
 .classpath

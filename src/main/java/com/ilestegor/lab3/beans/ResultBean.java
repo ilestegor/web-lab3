@@ -1,38 +1,36 @@
 package com.ilestegor.lab3.beans;
 
-import com.ilestegor.lab3.utils.AreaChecker;
+
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import javax.persistence.*;
 
 import java.io.Serializable;
-
+@Entity
 @Named
+@Table(name = "result")
 @ApplicationScoped
 public class ResultBean implements Serializable {
-    @Inject
-    private CoordinatesBean coordinatesBean;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private long id;
+    @Column(name = "x", nullable = false)
+    private double x;
+    @Column(name = "y", nullable = false)
+    private double y;
+    @Column(name = "r", nullable = false)
+    private double r;
+    @Column(name = "request_time", nullable = false)
     private String currentTime;
+    @Column(name = "execution_time", nullable = false)
     private long executionTime;
+    @Column(name = "hit_type", nullable = false)
     private String hitType;
 
     public ResultBean() {
     }
 
-    public ResultBean(ResultBean resultBean) {
-        coordinatesBean = resultBean.getCoordinates();
-        CoordinatesBean curCords = new CoordinatesBean(coordinatesBean);
-        resultBean.setCoordinates(curCords);
-        hitType = AreaChecker.checkArea(curCords.getX(), curCords.getY(), curCords.getR());
-    }
-
-    public CoordinatesBean getCoordinates() {
-        return coordinatesBean;
-    }
-
-    public void setCoordinates(CoordinatesBean coordinatesBean) {
-        this.coordinatesBean = coordinatesBean;
-    }
 
     public String getCurrentTime() {
         return currentTime;
@@ -57,5 +55,37 @@ public class ResultBean implements Serializable {
 
     public void setHitType(String hitType) {
         this.hitType = hitType;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
     }
 }

@@ -1,5 +1,7 @@
 package com.ilestegor.lab3.beans;
 
+import com.ilestegor.lab3.db.DAOFactory;
+import com.ilestegor.lab3.utils.AreaChecker;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -29,16 +31,18 @@ public class AreaResultsBean implements Serializable {
 
     public void addNewResult() {
         long startExec = System.nanoTime();
-        ResultBean newResult = new ResultBean(resultBean);
+        ResultBean newResult = new ResultBean();
+        newResult.setHitType(AreaChecker.checkArea(resultBean.getX(), resultBean.getY(), resultBean.getR()));
         long endExec = System.nanoTime();
         long executionTime = endExec - startExec;
         newResult.setExecutionTime(executionTime);
         String requestTime = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         newResult.setCurrentTime(requestTime);
-        newResult.getCoordinates().setX(Double.parseDouble(decimalFormat.format(newResult.getCoordinates().getX())));
-        newResult.getCoordinates().setY(Double.parseDouble(decimalFormat.format(newResult.getCoordinates().getY())));
-        newResult.getCoordinates().setR(Double.parseDouble(decimalFormat.format(newResult.getCoordinates().getR())));
-        curResult.addLast(newResult);
+        newResult.setX(Double.parseDouble(decimalFormat.format(resultBean.getX())));
+        newResult.setY(Double.parseDouble(decimalFormat.format(resultBean.getY())));
+        newResult.setR(Double.parseDouble(decimalFormat.format(resultBean.getR())));
+        DAOFactory.getDaoFactory().getDao().addResult(newResult);
+        curResult.add(newResult);
     }
     public void clearResult(){
         curResult.clear();

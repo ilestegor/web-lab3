@@ -30,15 +30,15 @@
                              paginatorTemplate="{CurrentPageReport}
                      {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}" value="#{areaResultsBean.curResult}">
                     <p:column headerText="X">
-                        <h:outputText value="#{result.coordinates.x}"/>
+                        <h:outputText value="#{result.x}"/>
                     </p:column>
 
                     <p:column headerText="Y">
-                        <h:outputText value="#{result.coordinates.y}"/>
+                        <h:outputText value="#{result.y}"/>
                     </p:column>
 
                     <p:column headerText="R">
-                        <h:outputText value="#{result.coordinates.r}"/>
+                        <h:outputText value="#{result.r}"/>
                     </p:column>
 
                     <p:column headerText="Current Time">
@@ -65,7 +65,7 @@
                         <p>X value: </p>
                         <div class="x-input-container input-box">
                             <h:outputText id="output" value="Choose x value" styleClass="x-value"/>
-                            <h:inputHidden id="x" class="x-value" value="#{resultBean.coordinates.x}">
+                            <h:inputHidden id="x" class="x-value" value="#{resultBean.x}">
                                 <f:converter converterId="customDoubleConverter"/>
                                 <f:validator validatorId="validatorX"/>
                             </h:inputHidden>
@@ -78,7 +78,7 @@
                         <p>Y value: </p>
                         <div class="error-container input-box">
                                 <h:inputText id="y-input" styleClass="text-input y-text"
-                                             a:placeholder="Enter value from -3...3" value="#{resultBean.coordinates.y}"
+                                             a:placeholder="Enter value from -3...3" value="#{resultBean.y}"
                                              maxlength="7" onfocus="this.value=''">
                                     <f:converter converterId="customDoubleConverter"/>
                                     <f:validator validatorId="validatorY"/>
@@ -90,7 +90,7 @@
                     <div class="input-container">
                         <p>R value: </p>
                         <div class="error-container input-box">
-                            <h:selectOneRadio value="#{resultBean.coordinates.r}" id="r" validator="validatorR"
+                            <h:selectOneRadio value="#{resultBean.r}" id="r" validator="validatorR"
                                               converter="customDoubleConverter">
                                 <f:selectItem itemValue="1" itemLabel="1.0"/>
                                 <f:selectItem itemValue="1.5" itemLabel="1.5"/>
@@ -114,13 +114,13 @@
                 </h:form>
                 <h:form id="graphSelect">
                     <p:growl showDetail="true" id="graph-x-error" life="2000"/>
-                    <h:inputHidden id="graph-x" value="#{resultBean.coordinates.x}">
+                    <h:inputHidden id="graph-x" value="#{resultBean.x}">
                         <f:validator validatorId="validatorX"/>
                     </h:inputHidden>
-                    <h:inputHidden id="graph-y" value="#{resultBean.coordinates.y}">
+                    <h:inputHidden id="graph-y" value="#{resultBean.y}">
                         <f:validator validatorId="validatorY"/>
                     </h:inputHidden>
-                    <h:inputHidden id="graph-r" value="#{resultBean.coordinates.r}">
+                    <h:inputHidden id="graph-r" value="#{resultBean.r}">
                         <f:validator validatorId="validatorR"/>
                     </h:inputHidden>
                     <p:remoteCommand name="updateBeanValues" action="#{areaResultsBean.addNewResult()}"
@@ -138,8 +138,8 @@
         <h:outputScript library="js" name="graph.js"/>
         <h:outputScript>
             <ui:repeat value="#{areaResultsBean.curResult}" var="res">
-                dots.push(`#{res.coordinates.x}#{res.coordinates.y}`);
-                drawDots(#{res.coordinates.x}, #{res.coordinates.y}, redColor);
+                dots.push(`#{res.x}#{res.y}`);
+                drawDots(#{res.x}, #{res.y}, redColor);
             </ui:repeat>
         </h:outputScript>
     </ui:define>
