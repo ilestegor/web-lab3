@@ -1,7 +1,17 @@
 package com.ilestegor.lab3.db;
 
-public interface DAO<T>{
-    void addResult(T t);
-    void clearResults(T t);
-    void getAllResults(T t);
+import java.sql.SQLException;
+import java.util.List;
+
+/**
+ * Dao interface which describes methods for communicating with database
+ *
+ * @param <T>
+ */
+public interface DAO<T> {
+    void addResult(T t) throws SQLException;
+
+    void clearResults() throws SQLException;
+
+    List<T> getAllResults() throws SQLException;
 }

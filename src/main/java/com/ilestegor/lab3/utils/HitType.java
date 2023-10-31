@@ -1,5 +1,8 @@
 package com.ilestegor.lab3.utils;
 
+/**
+ * Enum for representing hit area in emojis
+ */
 public enum HitType {
     FIRST_AREA("1️⃣"),
     SECOND_AREA("2️⃣"),

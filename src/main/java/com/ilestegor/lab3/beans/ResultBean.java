@@ -3,9 +3,13 @@ package com.ilestegor.lab3.beans;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
+
+/**
+ * Bean component which represents data from user
+ */
 @Entity
 @Named
 @Table(name = "result")
@@ -30,7 +34,6 @@ public class ResultBean implements Serializable {
 
     public ResultBean() {
     }
-
 
     public String getCurrentTime() {
         return currentTime;

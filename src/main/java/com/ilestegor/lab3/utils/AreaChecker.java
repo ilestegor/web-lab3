@@ -1,7 +1,17 @@
 package com.ilestegor.lab3.utils;
 
+/**
+ * Class for checking hit area of coordinates
+ */
 public class AreaChecker {
 
+    /**
+     * Check area on graph
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @param r R coordinate
+     * @return String emoji of hit area
+     */
     public static String checkArea(double x, double y, double r) {
         if (checkFirstArea(x, y, r)) {
             return HitType.FIRST_AREA.getHitArea();

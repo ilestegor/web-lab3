@@ -1,26 +1,13 @@
 package com.ilestegor.lab3.beans;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Named;
-import jakarta.persistence.*;
-
 import java.io.Serializable;
 
 @Deprecated
-@Entity
-@Table(name = "web_coordinates")
-@Named
-@ApplicationScoped
 public class CoordinatesBean implements Serializable {
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    @Column(name = "x", nullable = false)
     private Double x;
-    @Column(name = "y", nullable = false)
     private Double y;
-    @Column(name = "r", nullable = false)
     private Double r;
 
     public CoordinatesBean() {

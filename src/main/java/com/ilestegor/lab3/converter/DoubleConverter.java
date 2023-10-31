@@ -5,6 +5,9 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 
+/**
+ * Custom converter to double type
+ */
 @FacesConverter("customDoubleConverter")
 public class DoubleConverter implements Converter {
 
