@@ -29,7 +29,7 @@ public class AreaResultsBean implements Serializable {
     @PostConstruct
     private void initialize() {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
-        decimalFormat = new DecimalFormat("#.###");
+        decimalFormat = new DecimalFormat("#.#####");
         curResult = new LinkedList<>();
         try {
             curResult = new LinkedList<>(DAOFactory.getDaoFactory().getDao().getAllResults());
@@ -50,9 +50,9 @@ public class AreaResultsBean implements Serializable {
         newResult.setExecutionTime(executionTime);
         String requestTime = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         newResult.setCurrentTime(requestTime);
-        newResult.setX(Double.parseDouble(decimalFormat.format(resultBean.getX())));
-        newResult.setY(Double.parseDouble(decimalFormat.format(resultBean.getY())));
-        newResult.setR(Double.parseDouble(decimalFormat.format(resultBean.getR())));
+        newResult.setX(Double.parseDouble(decimalFormat.format(resultBean.getX()).replace(",", ".")));
+        newResult.setY(Double.parseDouble(decimalFormat.format(resultBean.getY()).replace(",", ".")));
+        newResult.setR(Double.parseDouble(decimalFormat.format(resultBean.getR()).replace(",", ".")));
         if (curResult != null && curResult.add(newResult)) {
             try {
                 DAOFactory.getDaoFactory().getDao().addResult(newResult);
