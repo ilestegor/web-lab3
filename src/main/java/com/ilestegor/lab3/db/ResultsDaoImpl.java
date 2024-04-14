@@ -4,6 +4,7 @@ import com.ilestegor.lab3.beans.ResultBean;
 import com.ilestegor.lab3.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 
 import javax.persistence.criteria.CriteriaQuery;
 import java.sql.SQLException;

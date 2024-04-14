@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class for managing data from bean, adding, clearing and fetching data from database
@@ -22,14 +24,14 @@ import java.util.LinkedList;
 public class AreaResultsBean implements Serializable {
     @Inject
     private ResultBean resultBean;
-    private LinkedList<ResultBean> curResult;
+    private List<ResultBean> curResult;
     private SimpleDateFormat simpleDateFormat;
-    private DecimalFormat decimalFormat;
+    private final short NUMBER_OF_DECIMAL_PLACE = 3;
+    private final double PRECISION = Math.pow(10, NUMBER_OF_DECIMAL_PLACE);
 
     @PostConstruct
     private void initialize() {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
-        decimalFormat = new DecimalFormat("#.#####");
         curResult = new LinkedList<>();
         try {
             curResult = new LinkedList<>(DAOFactory.getDaoFactory().getDao().getAllResults());
@@ -50,15 +52,14 @@ public class AreaResultsBean implements Serializable {
         newResult.setExecutionTime(executionTime);
         String requestTime = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         newResult.setCurrentTime(requestTime);
-        newResult.setX(Double.parseDouble(decimalFormat.format(resultBean.getX()).replace(",", ".")));
-        newResult.setY(Double.parseDouble(decimalFormat.format(resultBean.getY()).replace(",", ".")));
-        newResult.setR(Double.parseDouble(decimalFormat.format(resultBean.getR()).replace(",", ".")));
-        if (curResult != null && curResult.add(newResult)) {
-            try {
-                DAOFactory.getDaoFactory().getDao().addResult(newResult);
-            } catch (SQLException e) {
-                System.out.println("Something went wrong while adding new result");
-            }
+        newResult.setX((resultBean.getX() * PRECISION) / PRECISION);
+        newResult.setY((resultBean.getY() * PRECISION) / PRECISION);
+        newResult.setR((resultBean.getR() * PRECISION) / PRECISION);
+        curResult.add(newResult);
+        try {
+            DAOFactory.getDaoFactory().getDao().addResult(newResult);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong while adding new result");
         }
     }
 
@@ -84,7 +85,7 @@ public class AreaResultsBean implements Serializable {
         this.resultBean = resultBean;
     }
 
-    public LinkedList<ResultBean> getCurResult() {
+    public List<ResultBean> getCurResult() {
         return curResult;
     }
 

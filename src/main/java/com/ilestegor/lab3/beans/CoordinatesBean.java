@@ -12,13 +12,6 @@ public class CoordinatesBean implements Serializable {
 
     public CoordinatesBean() {
     }
-
-    public CoordinatesBean(CoordinatesBean coordinatesBean) {
-        this.x = coordinatesBean.getX();
-        this.y = coordinatesBean.getY();
-        this.r = coordinatesBean.getR();
-    }
-
     public Long getId() {
         return id;
     }

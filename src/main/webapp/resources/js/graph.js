@@ -98,7 +98,7 @@ function drawXY(x, y, r) {
     }
 }
 
-//adds dots to localStorage
+
 function addDots(x, y) {
     dots.push(x + '' + y);
 }
@@ -114,7 +114,6 @@ function drawDots(x, y, color) {
         latex: '\\left(' + x + ',' + y + '\\right)',
     })
 }
-
 
 
 
